@@ -1,0 +1,129 @@
+:root {
+    --color-accent: #3B28CC;
+    --color-accent-text: #FEFEFE;
+    --color-text: #0E2431;
+    --color-block: #E9E9E9;
+    --color-block-dark: #B8B8B8;
+    --block-padding: 1rem 2rem;
+    --block-transition: 150ms ease-out;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Gabarito';
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--color-accent);
+    }
+}
+
+h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.5rem;
+    line-height: 1.25;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-rows: 4.5rem auto 3rem;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+    min-height: 100vh;
+}
+
+header {
+    z-index: 9999;
+    position: sticky;
+    top: 0;
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: var(--block-padding);
+    border-bottom: 0.25rem solid var(--color-block);
+    background: var(--color-accent-text);
+
+    > .logo {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    > nav {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        font-size: 1.15rem;
+        font-weight: 600;
+        text-align: center;
+
+        @media (max-width: 950px) {
+            gap: 1rem;
+        }
+    
+        > a {
+            --border-width: 2px;
+
+            display: block;
+            padding: 0 0 0.15rem 0;
+            border-bottom: var(--border-width) solid transparent;
+            margin-bottom: calc(var(--border-width) * -1);
+            transition: var(--block-transition) color, var(--block-transition) border;
+
+            &.active, &:hover {
+                border-color: var(--color-accent);
+            }
+        }
+    }
+}
+
+main {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100%;
+
+    > article {
+        width: 100%;
+        max-width: 2048px;
+    }
+
+    @media (max-width: 950px) {
+        padding: 1rem;
+    }
+}
+
+footer {
+    grid-area: footer;
+    padding: var(--block-padding);
+    text-align: center;
+    font-size: 0.75rem;
+    opacity: 0.55;
+}

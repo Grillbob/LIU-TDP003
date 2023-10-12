@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% set page = 'project' %}
+
+{% block title %}
+Project
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/style/project.page.css" />
+{% endblock %}
+
+
+{% block content %}
+<article>
+    <project-item></project-item>
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script async type="module" src="/static/js/project.page.js"></script>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock %} - Mates579</title>
+
+    <link rel="stylesheet" href="/static/style/base.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600;800&display=swap" />
+    {% block styles %}
+    {% endblock %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <a href="/">
+                    Mathias
+                </a>
+            </div>
+            <nav>
+                <a href="/" class="{{ 'active' if page == 'index' else '' }}">Home</a>
+                <a href="/projects"
+                    class="{{ 'active' if page == 'projects' or page == 'project' else '' }}">Projects</a>
+                <a href="/about" class="{{ 'active' if page == 'about' else '' }}">About</a>
+            </nav>
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            This is a projekt made by Mathias Johansen(mates579).
+        </footer>
+    </div>
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

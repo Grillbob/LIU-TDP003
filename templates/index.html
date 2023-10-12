@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% set page = 'index' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="/static/style/index.page.css" />
+{% endblock %}
+
+
+{% block content %}
+<article>
+    <div class="headline">
+        <h1 class="content">
+            Well hello,<br />
+            I'm <span>Mates579</span><br />
+            aka Mathias
+        </h1>
+    </div>
+    <div class="hero">
+        <img src="/static/images/blob.svg" />
+    </div>
+</article>
+{% endblock %}

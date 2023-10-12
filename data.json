@@ -1,0 +1,100 @@
+{
+    "stacks": [
+        "node",
+        "javascript",
+        "flask",
+        "python",
+        "html",
+        "css",
+        "json"
+    ],
+    "projects": [
+        {
+            "id": "0",
+            "stack": [
+                "python"
+            ],
+            "name": "Labb3",
+            "banner": "https://placehold.co/400/orange/white"
+        },
+        {
+            "id": "1",
+            "stack": [
+                "javascript",
+                "flask",
+                "python",
+                "html",
+                "css",
+                "json"
+            ],
+            "name": "Portfolio",
+            "banner": "https://placehold.co/400/purple/white"
+        },
+        {
+            "id": "2",
+            "stack": [
+                "css",
+                "html"
+            ],
+            "name": "Kursmail",
+            "banner": "https://placehold.co/400/green/white"
+        },
+        {
+            "id": "3",
+            "stack": [
+                "node",
+                "javascript"
+            ],
+            "name": "Server Test",
+            "banner": "https://placehold.co/400/red/white"
+        },
+        {
+            "id": "4",
+            "stack": [
+                "node",
+                "javascript",
+                "html"
+            ],
+            "name": "Templating",
+            "banner": "https://placehold.co/400/silver/white"
+        },
+        {
+            "id": "5",
+            "stack": [
+                "python"
+            ],
+            "name": "Labb3",
+            "banner": "https://placehold.co/400/orange/white"
+        },
+        {
+            "id": "6",
+            "stack": [
+                "javascript",
+                "flask",
+                "python",
+                "html"
+            ],
+            "name": "LoremIpsum",
+            "banner": "https://placehold.co/400/purple/white"
+        },
+        {
+            "id": "7",
+            "stack": [
+                "css",
+                "html",
+                "json"
+            ],
+            "name": "Kass",
+            "banner": "https://placehold.co/400/green/white"
+        },
+        {
+            "id": "8",
+            "stack": [
+                "flask",
+                "python"
+            ],
+            "name": "Another Server",
+            "banner": "https://placehold.co/400/red/white"
+        }
+    ]
+}

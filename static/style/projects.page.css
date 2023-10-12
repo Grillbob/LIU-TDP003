@@ -1,0 +1,25 @@
+body {
+    overflow-y: scroll;
+}
+
+article {
+    > .content {
+        display: grid;
+        grid-template-columns: auto 18rem;
+        gap: 2rem;
+
+        @media (max-width: 950px) {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+
+            > projects-filter {
+                order: -1;
+            }
+        }
+    }
+}
+
+.loading {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}

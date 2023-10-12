@@ -1,0 +1,8 @@
+main {
+    padding: 0;
+
+    > article {
+        width: 100%;
+        max-width: 100%;
+    }
+}
