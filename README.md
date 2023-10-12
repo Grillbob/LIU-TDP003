@@ -1,6 +1,11 @@
 # LIU-TDP003
 Portfolio website built using python+flask as pseudo-backend with es6 and web-components powering the frontend logic.
 
+## **Links**
+- Documentation
+  - [App](https://grillbob.github.io/LIU-TDP003/app)
+  - [API](https://grillbob.github.io/LIU-TDP003/api)
+ 
 ## Quick-start guide
 
 ### 1. Setup your env
