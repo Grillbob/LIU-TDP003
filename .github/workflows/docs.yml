@@ -1,0 +1,21 @@
+name: Generate & Publish Docs
+on:
+    push:
+        branches:
+            - master
+jobs:
+    docs:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v4
+              with:
+                python-version: '3.11'
+                cache: 'pip'
+            - run: pip install -r requirements.txt
+            - run: pdoc --force --html --output-dir doc app api
+            - uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./doc
+                  enable_jekyll: false
