@@ -20,6 +20,11 @@ Mauris tincidunt dapibus enim et convallis.
 Sed varius urna sed mauris hendrerit hendrerit.
 `
 
+/**
+ * Fetch specific projects from the "backend".
+ * @param {string} id - Project ID.
+ * @returns {Object} data - Project data.
+ */
 const fetchProject = async (id) => {
     const res = await (await fetch('/api/projects')).json();
 
@@ -35,10 +40,12 @@ const fetchProject = async (id) => {
 };
 
 class ProjectItem extends HTMLElement {
+    /** @constructor */
     constructor() {
         super();
         this.innerHTML = `<div class="loading">Loading...</div>`;
     }
+
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
 

@@ -18,12 +18,12 @@ python3 -m venv venv
 pip install -r requirements.txt
 ```
 
-### 2.A Run the development server
+### 2A Run the development server
 ```bash
 flask --app app run --debug --port 3001
 ```
 
-### 2.B Generate docs
+### 2B Generate docs
 ```bash
 pdoc --output-dir doc app api
 ```

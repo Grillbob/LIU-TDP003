@@ -1,15 +1,22 @@
-let projects = null;
-
+/**
+ * Fetch projects from the "backend".
+ * @returns {Object} data - `Object` containing `projects: any[]` and `stacks: string[]`.
+ */
 const fetchProjects = async () => {
     const res = await (await fetch('/api/projects')).json();
 
     if (res.status !== 200)
         throw new Error('todo');
 
-    console.log(res);
     return res.data;
 };
 
+/**
+ * `<projects-list-item>` component.
+ * 
+ * Somewhat similar functionality to a "product card" on an e-commerce site.
+ * @class
+ */
 class ProjectsListItem extends HTMLElement {
     constructor() {
         super();
@@ -112,15 +119,26 @@ class ProjectsListItem extends HTMLElement {
 }
 customElements.define('projects-list-item', ProjectsListItem);
 
+/**
+ * `<projects-list>` component.
+ * 
+ * A responsive grid with `<projects-list-item>` children.
+ * @class
+ */
 class ProjectsList extends HTMLElement {
     static observedAttributes = ['filter', 'search'];
 
+    /** @type {string[]} */
+    filter = [];
+    /** @type {string} */
+    search = '';
+
+    /** @constructor */
     constructor() {
         super();
-        this.innerHTML = `<div class="loading">Loading...</div>`;
+        this.innerHTML = '';
         this.shadow = this.attachShadow({ mode: 'open' });
-        this.filter = [];
-        this.search = '';
+        this.shadow.innerHTML = `<div class="loading">Loading...</div>`;
     }
 
     connectedCallback() {
@@ -142,12 +160,17 @@ class ProjectsList extends HTMLElement {
                 `;
             this.shadow.appendChild(style)
 
+            // Create a `<projects-list-item>` for every project.
             projects.forEach(project => {
+                // Check if we're supposed to filter based on stack
                 if (this.filter.length > 0) {
+                    // If current filter does not contain any of the current stack; bail.
                     if (!this.filter.some(e => project.stack.includes(e)))
                         return;
                 }
+                // Are we searching?
                 if (this.search) {
+                    // Convert to lowercase and check if substring is found, if not; bail.
                     if (!project.name.toLowerCase().includes(this.search.toLowerCase()))
                         return;
                 }
@@ -159,11 +182,19 @@ class ProjectsList extends HTMLElement {
                 wrapper.setAttribute('href', `/projects/${project.id}`);
 
                 wrapper.appendChild(instance);
+
+                // Write project child to the dom.
                 this.shadow.appendChild(wrapper);
             });
         })
     }
 
+    /**
+     * Fetch projects from the "backend".
+     * @param {string} name - Attribute name
+     * @param {string} prev - Previous value of the attribute
+     * @param {string} value - New (current) value of the attribute
+     */
     attributeChangedCallback(name, prev, value) {
         switch (name) {
             case 'filter':
@@ -179,11 +210,21 @@ class ProjectsList extends HTMLElement {
 }
 customElements.define('projects-list', ProjectsList);
 
+/**
+ * `<projects-filter>` component, Filtering and search UI.
+ * 
+ * Works by updating attributes on a `<projects-list>` component.
+ * FIXME: Hardcoded to target the first instance of `<projects-list>`.
+ * @class
+ */
 class ProjectsFilter extends HTMLElement {
+    /** @type {string[]} */
+    filter = [];
+
+    /** @constructor */
     constructor() {
         super();
         this.innerHTML = ``;
-        this.filter = [];
     }
 
     connectedCallback() {
